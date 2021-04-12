@@ -1,4 +1,5 @@
 use crate::coin_flip::FlipResult::{Both, Heads, Tails};
+use core::fmt;
 use rand::distributions::Bernoulli;
 use rand::prelude::{Distribution, ThreadRng};
 use wasm_bindgen::prelude::*;
@@ -45,6 +46,12 @@ pub enum FlipResult {
     Heads,
     Tails,
     Both,
+}
+
+impl fmt::Display for FlipResult {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
 }
 
 pub enum FlipStrategy {
